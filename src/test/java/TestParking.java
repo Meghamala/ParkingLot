@@ -1,8 +1,10 @@
+import ChargeStrategy.FourWheelerWeekdayCharge;
+import exceptions.InvalidVehicleNumberException;
 import exceptions.ParkingFullException;
 
 public class TestParking {
 
-    public static void main(String[] args) throws ParkingFullException {
+    public static void main(String[] args) throws ParkingFullException, InvalidVehicleNumberException {
         ParkingImpl parkingLot = ParkingImpl.getParkingLot();
 
         parkingLot.setParkingLot(10, 10);
@@ -16,6 +18,9 @@ public class TestParking {
 
         Ticket ticket2 = parkingLot.park(vehicle2);
         System.out.println(ticket2);
+
+        double charge = parkingLot.unpark(ticket2, new FourWheelerWeekdayCharge());
+        System.out.println(charge);
 
     }
 
